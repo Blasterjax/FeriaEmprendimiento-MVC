@@ -1,0 +1,50 @@
+/* Estilos del proyecto Feria de Emprendimiento - Samuel Cortés Guirales */
+
+body {
+    background-color: #f4f6f9;
+    font-family: Arial, sans-serif;
+    color: #333333;
+}
+
+/* Banner de la feria */
+.banner-feria {
+    background-color: #1a365d;
+    color: #ffffff;
+    padding: 25px 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+/* Tarjetas de stands */
+.card {
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.tarjeta-stand {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-stand:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Contador de stands */
+.caja-total {
+    background-color: #e2e8f0;
+    border-left: 4px solid #2b6cb0;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Navegación y pie de página */
+.navbar-brand {
+    font-size: 1.25rem;
+}
+
+footer {
+    background-color: #212529;
+    color: #cbd5e0;
+}
