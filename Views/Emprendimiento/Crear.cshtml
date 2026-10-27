@@ -1,0 +1,98 @@
+@model FeriaEmprendimiento.Models.Emprendimiento
+@{
+    ViewData["Title"] = "Registrar Stand";
+    var categorias = ViewBag.Categorias as List<string> ?? new List<string>();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+    <div>
+        <h2 class="h4 fw-bold mb-0">Registrar Nuevo Emprendimiento</h2>
+        <span class="text-muted small">Ingresa la información del stand participante</span>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        Volver al Catálogo
+    </a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+        <div class="card shadow-sm border p-4">
+
+            <form asp-action="Crear" method="post" id="form-crear-stand">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label asp-for="Nombre" class="form-label fw-semibold">Nombre del Emprendimiento</label>
+                        <input asp-for="Nombre" class="form-control" placeholder="Ej: EcoBolsas" />
+                        <span asp-validation-for="Nombre" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="Categoria" class="form-label fw-semibold">Categoría</label>
+                        <select asp-for="Categoria" class="form-select">
+                            <option value="" disabled selected>Seleccione una categoría...</option>
+                            @foreach (var cat in categorias)
+                            {
+                                <option value="@cat">@cat</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Categoria" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="NumeroStand" class="form-label fw-semibold">Número de Stand</label>
+                        <input asp-for="NumeroStand" class="form-control" placeholder="Ej: A-01, B-03" />
+                        <span asp-validation-for="NumeroStand" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="PrecioBase" class="form-label fw-semibold">Precio (COP)</label>
+                        <input asp-for="PrecioBase" type="number" step="1000" min="1000" class="form-control" placeholder="Ej: 35000" />
+                        <span asp-validation-for="PrecioBase" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label asp-for="NombreEmprendedor" class="form-label fw-semibold">Nombre del Fundador</label>
+                        <input asp-for="NombreEmprendedor" class="form-control" placeholder="Ej: Samuel Cortés" />
+                        <span asp-validation-for="NombreEmprendedor" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label asp-for="CorreoContacto" class="form-label fw-semibold">Correo Electrónico</label>
+                        <input asp-for="CorreoContacto" type="email" class="form-control" placeholder="contacto@ejemplo.com" />
+                        <span asp-validation-for="CorreoContacto" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label asp-for="Telefono" class="form-label fw-semibold">Teléfono de Contacto</label>
+                        <input asp-for="Telefono" type="tel" class="form-control" placeholder="Ej: 3101234567" />
+                        <span asp-validation-for="Telefono" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="Descripcion" class="form-label fw-semibold">Descripción corta</label>
+                        <textarea asp-for="Descripcion" class="form-control" rows="3" placeholder="Describe brevemente el producto o servicio"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-12 pt-3 border-top d-flex gap-2 justify-content-end">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            Guardar Emprendimiento
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
